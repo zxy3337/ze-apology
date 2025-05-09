@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>道歉程序 v1.0</title>
+  <style>
+    body {
+      background-color: black;
+      color: limegreen;
+      font-family: "Courier New", monospace;
+      padding: 20px;
+    }
+    #console {
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <div id="console"></div>
+
+  <script>
+    const lines = [
+      "系统初始化中...",
+      "启动道歉程序 v1.0",
+      "",
+      "致亲爱的 泽：",
+      "在深思熟虑之后，我意识到我因 租房奚落你 给你带来了困扰。",
+      "对此，我深感抱歉。",
+      "请相信，我的歉意是真挚的，真诚指数为：100%。",
+      "我会认真反省，确保类似情况不再发生。",
+      "—— 来自一位懂得认错的然头"
+    ];
+
+    const consoleDiv = document.getElementById("console");
+
+    let lineIndex = 0;
+    let charIndex = 0;
+
+    function typeLine() {
+      if (lineIndex >= lines.length) return;
+
+      const currentLine = lines[lineIndex];
+      if (charIndex <= currentLine.length) {
+        consoleDiv.innerHTML += currentLine.charAt(charIndex);
+        charIndex++;
+        setTimeout(typeLine, 50); // 控制字符间隔
+      } else {
+        consoleDiv.innerHTML += "<br>";
+        lineIndex++;
+        charIndex = 0;
+        setTimeout(typeLine, 300); // 控制行与行之间的间隔
+      }
+    }
+
+    typeLine();
+  </script>
+</body>
+</html>
